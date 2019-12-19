@@ -1,5 +1,12 @@
 # MyBlog
+
 Spring Framework를 이용하여 만든 개인 블로그 입니다. 
+
+Spirng Security를 사용하여 로그인 기능을 구현하였으며, 사용자 권한에 따라 서비스를 이용할 수 있도록 만들었습니다.
+
+자바스크립트를 이용하여 비동기식 처리를 하였고 페이지 이동없이 댓글을 달수 있도록 만들었습니다.
+
+
 
 ## Skills 
 1. Spring Framework, Spring Framework Security
