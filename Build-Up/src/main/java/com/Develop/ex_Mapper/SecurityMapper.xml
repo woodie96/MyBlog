@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<!-- 사용할 인터페이스의 경로 -->
+<mapper namespace="com.Develop.ex_DAO.MemberMapper">
+ 
+ 	<resultMap type="com.Develop.ex_VO.MemberVO" id="memberMap"> <!-- 여기의 정보는 맨밑의 select문에서 조회한 값이 채운다. -->
+ 		<id property="userid" column="userid"/>
+ 		<result property="userid" column="userid"/>
+ 		<result property="userpw" column="userpw"/>
+ 		<result property="userName" column="username"/><!-- 시큐리티에서 username = id 이기때문에 프로퍼티를 userName으로 준듯 -->
+ 		<result property="nickname" column="nickname"/>
+ 		<result property="email" column="email"/>
+ 		<result property="regdate" column="regdate"/>
+ 		<collection property="authList" resultMap="authMap"> <!-- authList의 값은 밑의 authMap이 채울거임 -->
+ 		</collection>
+ 	</resultMap>
+ 
+ 	<resultMap type="com.Develop.ex_VO.AuthVO" id="authMap">
+ 		<result property="userid" column="userid"/>
+ 		<result property="authority" column="authority"/>
+ 	</resultMap>
+ 	
+ 	<select id="read" resultMap="memberMap">
+ 		select member.userid, userpw, username, nickname, email, enabled, authority from member LEFT OUTER JOIN authorities 
+ 		on member.userid = authorities.userid where member.userid = #{param1}    
+ 	</select>
+ 	
+</mapper>
